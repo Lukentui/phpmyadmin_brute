@@ -4,3 +4,6 @@
     - url  -> phpmyadmin login page url
     - user -> mysql username
     - pswd -> passwords list
+
+# Requirements
+- Python 3
