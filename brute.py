@@ -17,25 +17,20 @@ def parse_server(bs_tree: BeautifulSoup) -> str:
 
 def login(username: str, password: str, csrf_token: str, server_num: str) -> bool:
     """ Tries to sign in """
-    
     request = post(PHPMYADMIN_LOGIN_URL, data={
         "pma_username": username,
         "pma_password": password,
         "server": server_num,
         "token": csrf_token,
         "target": "index.php",
-    }, headers={
-        'User-Agent': 'Mozilla/5.0',
-        'Connection': 'keep-alive',
-        
     })
 
     cookies = request.headers['Set-Cookie']
 
-    if ("pmaAuth-1=deleted" in cookies):
+    if "pmaAuth-1=deleted" in cookies:
         return False
-    else:
-        return True
+
+    return True
 
 SOUP = BeautifulSoup(get(PHPMYADMIN_LOGIN_URL).text, "html.parser")
 
