@@ -78,7 +78,6 @@ def bruteforce(phpmyadmin_url: str, username: str, pswd_file: str) -> None:
 
     print('PASSWORD NOT FOUND((')
 
-
 banner() #show banner
 
 # pylint: disable=line-too-long
