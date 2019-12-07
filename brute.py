@@ -3,7 +3,7 @@
 """ Python 3 PhpMyAdmin bruteforce script """
 
 from argparse import ArgumentParser
-from os import system
+from os import system, name as os_name
 from sys import exit as sys_exit
 from bs4 import BeautifulSoup
 from requests import get, post
@@ -18,6 +18,10 @@ def banner():
     print('  Example: python3 brute.py -url http://localhost/phpmyadmin/ -user root -pswd passwords.txt')
     print('  -> to bruteforce root on http://localhost/phpmyadmin/ with passwords from passwords.txt(default passwords list)')
     print()
+
+def clear():
+    """ Clear terminal """
+    system('cls' if os_name == 'nt' else 'clear')
 
 def parse_csrf_token(bs_tree: BeautifulSoup) -> str:
     """ Find csrf token """
@@ -73,7 +77,7 @@ def bruteforce(phpmyadmin_url: str, username: str, pswd_file: str) -> None:
                 [attempts_field, password]
             ]
 
-            system('cls')
+            clear()
             print(AsciiTable(table_data).table)
 
     print('PASSWORD NOT FOUND((')
