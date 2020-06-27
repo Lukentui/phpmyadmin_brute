@@ -3,7 +3,8 @@
 """ Python 3 PhpMyAdmin bruteforce script """
 
 from argparse import ArgumentParser
-from os import system, name as os_name
+from os import name as os_name
+import subprocess
 from sys import exit as sys_exit
 from bs4 import BeautifulSoup
 from requests import get, post
@@ -21,7 +22,7 @@ def banner():
 
 def clear():
     """ Clear terminal """
-    system('cls' if os_name == 'nt' else 'clear')
+    subprocess.call('cls' if os_name == 'nt' else 'clear', shell=False)
 
 def parse_csrf_token(bs_tree: BeautifulSoup) -> str:
     """ Find csrf token """
