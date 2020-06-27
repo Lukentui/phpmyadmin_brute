@@ -4,7 +4,7 @@
 
 from argparse import ArgumentParser
 from os import name as os_name
-import subprocess
+from subprocess import call as call_proc
 from sys import exit as sys_exit
 from bs4 import BeautifulSoup
 from requests import get, post
@@ -22,7 +22,7 @@ def banner():
 
 def clear():
     """ Clear terminal """
-    subprocess.call('cls' if os_name == 'nt' else 'clear', shell=False)
+    call_proc('cls' if os_name == 'nt' else 'clear', shell=False)
 
 def parse_csrf_token(bs_tree: BeautifulSoup) -> str:
     """ Find csrf token """
@@ -46,8 +46,7 @@ def login(url: str, username: str, password: str, csrf_token: str, server_num: s
 
     response_html = request.text
 
-    # Error 1045 = login error
-    if "#1045" in response_html or "AllowNoPassword" in response_html:
+    if "class=\"disableAjax login hide js-show\"" in response_html:
         return False
 
     return True
