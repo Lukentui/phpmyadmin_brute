@@ -22,7 +22,7 @@ def banner():
 
 def clear():
     """ Clear terminal """
-    call_proc('cls' if os_name == 'nt' else 'clear', shell=True)
+    call_proc('cls' if os_name == 'nt' else 'clear', shell=False)
 
 def parse_csrf_token(bs_tree: BeautifulSoup) -> str:
     """ Find csrf token """
