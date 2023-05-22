@@ -5,7 +5,7 @@
 beautifulsoup4 == 4.8.1
 
 # brute.py: 6
-requests == 2.21.0
+requests == 2.31.0
 
 # brute.py: 8
 terminaltables == 3.1.0
