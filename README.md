@@ -13,3 +13,6 @@
 
 # Requirements
 - Python 3
+
+
+❤️ Made with Love by [Luka Nikitin](https://nikkitin.pro/)
